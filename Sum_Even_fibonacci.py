@@ -4,7 +4,7 @@ def sum_even_fibonacci(n):
     a, b = 0, 1
     total = 0
     
-    for _ in range(n):
+    for i in range(n):
         if a % 2 == 0:
             total += a
         a, b = b, a + b

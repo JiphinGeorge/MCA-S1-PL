@@ -23,6 +23,6 @@ def password(password):
         return False
     if not re.search("[#$@]", password):
         return False
-    return password
+    return True
 
-print(password("Abc@123"))  # password
+print("Is vailid :" ,password("Abc@123" ))  # password
