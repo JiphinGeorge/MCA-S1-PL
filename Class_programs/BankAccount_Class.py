@@ -19,6 +19,7 @@ class Bank:
             self.balance -= amount
             print("Amount Withdrawn. New Balance:", self.balance)
 
+
 # Example
 b = Bank(101, "Jiphin", "Savings", 1000)
 b.deposit(500)
