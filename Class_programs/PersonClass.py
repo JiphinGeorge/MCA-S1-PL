@@ -1,56 +1,61 @@
-# class Person:
-#     def __init__(self,name,age):
-#         self.name=name
-#         self.age=age
-#     def display(self):
-#         print(f"The name of the Person is {self.name}")
-#         print(f"The age of the Person is {self.age}")
-# class Employee(Person):
-#     def
+# Create a class Person(name, age) with constructor and a method display().
+# Create a class Employee(EmpID) from Person and override display() to include ID
+# Create a derived class Faculty(department) from Employee and override display() to include the department.
+# Create a class Researcher with method can_do_research() that returns a string indicating the person can conduct research.
+# Create a class Professor inheriting from Faculty and Researcher.
+
 class Person:
-    def __init__(self, name, id):
+    def __init__(self, name, age):
         self.name = name
-        self.id = id
+        self.age = age
 
     def display(self):
-        print(f"Name: {self.name}")
-        print(f"ID: {self.id}")
+        print("Name:", self.name)
+        print("Age:", self.age)
 
-# Faculty class derived from Person
-class Faculty(Person):
-    def __init__(self, name, id, department):
-        super().__init__(name, id)
+
+class Employee(Person):
+    def __init__(self, name, age, empID):
+        super().__init__(name, age)
+        self.empID = empID
+
+    def display(self):
+        super().display()
+        print("Employee ID:", self.empID)
+
+
+class Faculty(Employee):
+    def __init__(self, name, age, empID, department):
+        super().__init__(name, age, empID)
         self.department = department
 
     def display(self):
         super().display()
-        print(f"Department: {self.department}")
+        print("Department:", self.department)
 
-# Employee class derived from Person
-class Employee(Person):
-    def __init__(self, name, id, emp_id):
-        super().__init__(name, id)
-        self.emp_id = emp_id
 
-    def display(self):
-        super().display()
-        print(f"Employee ID: {self.emp_id}")
-
-# Researcher class
 class Researcher:
     def can_do_research(self):
-        return "This person can conduct research."
+        return "Can conduct research."
 
-# Professor class derived from Faculty and Researcher
+
 class Professor(Faculty, Researcher):
-    def __init__(self, name, id, department, emp_id):
-        Faculty.__init__(self, name, id, department)
-        Employee.__init__(self, name, id, emp_id)
+    def __init__(self, name, age, empID, department):
+        Faculty.__init__(self, name, age, empID, department)
 
-    def display(self):
-        super().display()
-        print(self.can_do_research())
 
-# Example usage
-professor = Professor("Dr. Smith", "12345", "Computer Science", "6789")
-professor.display()
+# Create object
+p1 = Professor("Dr. Meera", 45, "EMP123", "Computer Science")
+
+# Display details
+p1.display()
+print(p1.can_do_research())
+
+# ------------------------------------------------------
+# OUTPUT:
+# Name: Dr. Meera
+# Age: 45
+# Employee ID: EMP123
+# Department: Computer Science
+# Can conduct research.
+# ------------------------------------------------------
